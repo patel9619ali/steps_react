@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
 
+import './index.css';
+const messages = [
+  "Learn React ⚛️",
+  "Apply for jobs 💼",
+  "Invest your new income 🤑",
+];
+function handlePrevious(){
+  alert("Previous");
+}
+function handleNext(){
+  alert("Next");
+}
 function App() {
+  const steps = 3;
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="steps">
+      <div className="numbers">
+        <div className='active'>1</div>
+        <div>2</div>
+        <div>3</div>
+      </div>
+      <p className='message'>{
+       messages[steps-1]
+      }</p>
+      <div className="buttons">
+        <button style={{color: '#fff', backgroundColor: "Purple"}} onClick={handlePrevious}>Previous</button>
+        <button style={{color: '#fff', backgroundColor: "Purple"}} onClick={handleNext}>Next</button>
+      </div>
     </div>
   );
 }
