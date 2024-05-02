@@ -99,3 +99,14 @@ h3 {
   text-align: right;
 } */
 
+.stepsNumber, .counterNumber{
+  display: flex;
+  margin-bottom: 10px;
+  justify-content: center;
+}
+.stepsCounter, .counterCounter{
+  border: 1px solid #7950f2;
+}
+.date_wrapper{
+  text-align: center;
+}
