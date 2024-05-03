@@ -14,22 +14,22 @@ import './index.css';
 function App() {
   let [stepsNumber,setStepsNumber] = useState(1);
   let [stepsCounterNumber,setCounterNumber] = useState(0);
-  let [dateNumber,setDateNumber] = useState(new Date().getDate());
-  // console.log(dateNumber)
+  let dateNumber = new Date()
+  dateNumber.setDate(dateNumber.getDate() + stepsCounterNumber);
+  dateNumber = dateNumber.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+  // console.log(dateNumber,"dateNumber");
+  // console.log(stepsCounterNumber,"stepsCounterNumber");
   function handleStepsDecrement(){
     setStepsNumber((isSteps)=>isSteps - 1);
   }
   function handleStepsIncrement(){
     setStepsNumber((isSteps)=>isSteps + 1);
-    console.log(stepsNumber)
   }
   function handleCounterDecrement(){
     setCounterNumber(stepsCounterNumber - stepsNumber);
   }
   function handleCounterIncrement(){
     setCounterNumber(stepsCounterNumber + stepsNumber);
-    console.log(stepsCounterNumber)
-    setDateNumber(stepsCounterNumber)
   }
   // let [steps,setSteps] = useState(1);
   // let [previoussteps,setPrevioussteps] = useState(3)
@@ -50,10 +50,6 @@ function App() {
   // function handleClose(){
   //   setisOpen(!isOpen)
   // }
-  const date = new Date();
-  const showTime = date.getDay() 
-      + ':' + date.getMinutes() 
-      + ":" + date.getSeconds();
   return (
     <Fragment>
       <div className="stepsNumber">
@@ -67,8 +63,10 @@ function App() {
         <button className="counterCounter"  onClick={handleCounterIncrement}>+</button>
       </div>
 
-
-     <p className='date_wrapper'> {showTime}</p>
+      
+     <p className='date_wrapper'>
+     {stepsCounterNumber > 0 ? `${stepsCounterNumber} After is ${dateNumber}` : stepsCounterNumber === 0 ? `${stepsCounterNumber} Today is ${dateNumber}`: `${stepsCounterNumber} Ago was ${dateNumber}`}
+      </p>
       {/* <button className='close_button' onClick={handleClose}>{isOpen ? "Close" : "Open"}</button>
       {isOpen && <div className="steps">
         <div className="numbers">
